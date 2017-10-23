@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>Shopping List
+      <span class="refresh-icon" (click)="reloadPage()">
+        <ion-icon name="md-refresh"></ion-icon>
+      </span>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="addItem()">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-10>
+          <ion-item>
+            <ion-input clearInput type="text" [(ngModel)]="newItem" name="newItem" placeholder="Add new item"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col col-2>
+          <button ion-button>
+            <ion-icon name="md-add"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </form>
+
+  <ion-spinner *ngIf="loading" name="bubbles"></ion-spinner>
+
+  <div class="list mylist" *ngIf="user">
+    <div class="name">{{ user.username }}</div>
+    <div *ngIf="myList?.length > 0">
+      <div class="item" *ngFor="let item of myList">
+        {{ item.item }}
+        <a>
+          <ion-icon name="md-close-circle" (click)="deleteItem(item)"></ion-icon>
+        </a>
+      </div>
+    </div>
+    <div *ngIf="myList?.length < 1">
+      <div class="no-data">
+        Empty!
+      </div>
+    </div>
+  </div>
+  <div class="list" *ngIf="othersList">
+
+    <div *ngFor="let list of othersList">
+      <div *ngIf="list.list?.length > 0">
+        <div class="name">{{ list.username }}</div>
+        <div class="item" *ngFor="let item of list.list">
+          {{ item.item }}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col text-right>
+        <button ion-button outline small color="light" (click)="logout()">Logout</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

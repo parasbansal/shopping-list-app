@@ -1,0 +1,32 @@
+page-list {
+	.list{
+		margin: 10px 15px;
+		border: 1px solid #999;
+		.name{
+			font-size: 20px;
+			padding: 5px 10px;
+			border-bottom: 1px solid color($colors, primary);
+			background: color($colors, primary);
+			color: #fff;
+		}
+		.item{
+			padding: 10px;
+			border-bottom: 1px solid #efefef;
+			color: #ddd;
+			a{
+				float: right;
+			}
+		}
+	}
+	.no-data{
+		text-align: center;
+		background: #1f1f1f;
+		padding: 15px;
+		color: #666;
+	}
+	.refresh-icon{
+		position: absolute;
+		right: 20px;	
+	}
+
+}

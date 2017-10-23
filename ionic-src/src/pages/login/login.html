@@ -1,0 +1,36 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form (ngSubmit)="loginForm()">
+    <ion-item>
+      <ion-label>Username</ion-label>
+      <ion-input type="text" [(ngModel)]="username" name="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password" name="password"></ion-input>
+    </ion-item>
+
+    <div *ngIf="error" class="error" text-center>
+      {{ error }}
+    </div>
+    <br>
+    <button ion-button type="submit" block>Login
+      <ion-spinner *ngIf="loading" name="bubbles"></ion-spinner>
+    </button>
+  </form>
+
+  <br>
+  <br>
+  <br>
+
+  <button ion-button full outline color="secondary" (click)="goToRegisterPage()">Create an account</button>
+
+</ion-content>
